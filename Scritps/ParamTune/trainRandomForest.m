@@ -1,0 +1,13 @@
+function [ b ] = trainRandomForest( traindata,treesnum,numpredtosample,mnleafsize )
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+
+op = statset('UseParallel',true);
+    b = TreeBagger(treesnum,traindata(:,1:28),traindata(:,end),'Method','classification','OOBVarImp','On',...
+    'NumPredictorsToSample',numpredtosample,...
+    'MinLeafSize',mnleafsize,...
+'OOBPrediction','on',...
+'Options',op);
+
+end
+
